@@ -1,0 +1,52 @@
+{% extends 'v_base_nav.html' %}
+
+{% block contenu %}
+    <h1>Résultats de la recherche des médecins</h1>
+
+    <!-- Formulaire de recherche -->
+    <form method="get">
+        <label for="search_query">Rechercher par nom :</label>
+        <input type="text" id="search_query" name="search_query">
+        <button type="submit">Rechercher</button>
+    </form>
+<br><br><br>
+    <!-- Tableau pour afficher les résultats -->
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>nom</th>
+                <th>prenom</th>
+                <th>adresse</th>
+                <th>numero_telephone</th>
+                <th>specialisteComplimentaire</th>
+                <th>departement</th>
+    
+            </tr>
+        </thead>
+        <tbody>
+            {% for medecin in medecins %}
+            <tr>
+                <td data-label="nom">{{ medecin.nom }}</td>
+                <td data-label="prenom">{{ medecin.prenom }}</td>
+                <td data-label="adresse">{{ medecin.adresse }}</td>
+                <td data-label="numero_telephone">{{ medecin.numero_telephone }}</td>
+                <td data-label="specialisteComplimentaire">{{ medecin.specialisteComplimentaire }}</td>
+                <td data-label="departement">{{ medecin.departement }}</td>
+                <td>
+                    <form action="{% url 'supprimer_medecin' medecin.id %}" method="post"> <!-- Remplacez 'supprimer_rapport' par l'URL de votre vue de suppression -->
+                        {% csrf_token %}
+                        <button type="submit">Supprimer</button>
+                    </form>
+                </td>
+                <td>
+                    <a href="{% url 'modifier_medecin' medecin.id %}" class="modifier-btn">Modifier</a>
+                </td>
+               
+               
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    </div>
+{% endblock %}

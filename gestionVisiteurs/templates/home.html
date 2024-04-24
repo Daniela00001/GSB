@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"  "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Gestion de Visites</title>
+<meta NAME="Author" CONTENT="Daniela">
+<meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
+<link rel="stylesheet" href="{% static 'CSS/style.css' %}">
+</head>
+<body>
+<header>
+    <h1>Bienvenue sur MedVisitPro</h1>
+</header>
+<div class="h1">
+    <p>Votre partenaire de confiance pour la gestion efficace des visites médicales. Notre plateforme simplifie le quotidien des visiteurs médicaux en optimisant et en facilitant la communication avec les professionnels de la santé, et en offrant un système intégré pour la gestion des rapports. Découvrez comment nous rendons votre travail plus efficient et votre interaction avec les médecins plus fluide.</p>
+</div>
+
+<div class="index_c">
+    <li> <a href="{% url 'connexion' %}">Connexion</a></li>
+    <li><a href="{% url 'inscription' %}">Inscription</a></li>
+</div>
+
+<div class="facilitateur">
+    <h2>Le Facilitateur de Communication</h2>
+    <p>Les Visiteurs Médicaux sont des communicateurs habiles, établissant des relations étroites avec les acteurs clés du domaine médical tels que les médecins, les pharmaciens, et les infirmières. Leur mission principale est de présenter, expliquer et promouvoir les produits médicaux ou pharmaceutiques de leur entreprise.</p>
+</div>
+
+<div class="expertise">
+    <h2>Expertise et Partage d'Information</h2>
+    <p>Ces professionnels sont dotés d'une connaissance approfondie des produits qu'ils représentent. Ils sont équipés pour fournir des informations détaillées, répondre aux questions, et organiser des sessions éducatives. Leur expertise contribue à garantir que les professionnels de la santé sont informés des dernières avancées médicales et des solutions innovantes.</p>
+</div>
+
+<div class="gestion">
+    <h2>Gestion des Relations</h2>
+    <p>Au-delà de la simple vente, les Visiteurs Médicaux sont également responsables de la gestion des relations. Ils établissent une confiance durable avec les professionnels de la santé en offrant un support continu, en fournissant des échantillons de produits, et en restant à l'écoute des besoins évolutifs du secteur.</p>
+</div>
+
+<div class="resume">
+    <h2>Une Présence Cruciale dans l'Industrie Pharmaceutique</h2>
+    <p>En résumé, les Visiteurs Médicaux jouent un rôle vital en facilitant la communication entre les entreprises de produits de santé et ceux qui les prescrivent ou les utilisent au quotidien. Leur présence dynamique et leur engagement contribuent à maintenir un niveau élevé de compréhension mutuelle et à assurer que les avancées médicales atteignent ceux qui en ont le plus besoin.</p>
+    <p>Découvrez comment notre plateforme de gestion des visites médicales optimise cette collaboration essentielle pour un impact maximal sur la santé et le bien-être. Bienvenue dans l'univers de [Nom de votre site] - où l'efficacité et la fluidité des visites médicales prennent tout leur sens.</p>
+</div>
+</body>
+</html>

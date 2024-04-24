@@ -1,0 +1,59 @@
+{% extends 'v_base_nav.html' %}
+
+{% block contenu %} 
+    <h1>Résultats de la recherche</h1>
+
+    <!-- Barre de recherche -->
+    <form method="get">
+        <label for="search_query">Rechercher :</label>
+        <input type="text" id="search_query" name="search_query">
+        <button type="submit">Rechercher</button>
+    </form>
+
+    <!-- Affichage des résultats -->
+    {% if rapports %}
+        <h2>Rapports trouvés :</h2>
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                <tr>
+                <tr>
+                    <th>Date</th>
+                    <th>Motif</th>
+                    <th>Bilan</th>
+                    <th>Créateur</th>
+                    <th>Médecin</th>
+                    <th>Médicament</th>
+                    <th>Quantité</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for rapport in rapports %}
+                <tr>
+                    <td data-label="Date">{{ rapport.date }}</td>
+                    <td data-label="Motif">{{ rapport.motif }}</td>
+                    <td data-label="Bilan">{{ rapport.bilan }}</td>
+                    <td data-label="Createur">{{ rapport.createur }}</td>
+                    <td data-label="Medecin">{{ rapport.medecin }}</td>
+                    <td data-label="Médicament">{{ rapport.medicament }}</td>
+                    <td data-label="Quantite">{{ rapport.quantite }}</td>
+                    <td >
+                            <!-- Formulaire de suppression -->
+                            <form action="{% url 'supprimer_rapport' rapport.id %}" method="post">
+                                {% csrf_token %}
+                                <button type="submit">Supprimer</button>
+                            </form>
+
+                            <!-- Lien de modification -->
+                            <a href="{% url 'modifier_rapport' rapport.id %}" class="modifier-btn">Modifier</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% else %}
+        <p>Aucun rapport trouvé pour la date spécifiée.</p>
+    {% endif %}
+{% endblock %}

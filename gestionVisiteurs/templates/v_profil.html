@@ -1,0 +1,25 @@
+{% extends 'v_base_nav.html' %}
+
+{% block contenu %} 
+    <div class="profile-container">
+        <h2>Profil de {{ utilisateur.login }}</h2>
+        <ul class="profile-info">
+            <li><strong>Nom :</strong> {{ utilisateur.nom }}</li>
+            <li><strong>Prénom :</strong> {{ utilisateur.prenom }}</li>
+            <li><strong>Adresse :</strong> {{ utilisateur.adresse }}</li>
+            <li><strong>Complément d'adresse :</strong> {{ utilisateur.complement_adresse }}</li>
+            <li><strong>Ville :</strong> {{ utilisateur.ville }}</li>
+            <li><strong>Code postal :</strong> {{ utilisateur.code_postal }}</li>
+            <li><strong>Email :</strong> {{ utilisateur.email }}</li>
+            <li><strong>Numéro de téléphone :</strong> {{ utilisateur.numero_telephone }}</li>
+            <li><strong>Date d'embauche :</strong> {{ utilisateur.date_embauche }}</li>
+        </ul>
+        <div class="profile-actions">
+            <a href="{% url 'modifier_profil' utilisateur.id %}" class="modifier-btn">Modifier</a>
+            <form action="{% url 'supprimer_profil' utilisateur.id %}" method="post" class="delete-form">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-danger">Supprimer</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

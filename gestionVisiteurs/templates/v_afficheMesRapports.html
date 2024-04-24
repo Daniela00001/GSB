@@ -1,0 +1,54 @@
+{% extends 'v_base_nav.html' %}
+
+{% block contenu %} 
+
+<form method="get" action="{% url 'rapport_search' %}">
+    <label for="search_query">Rechercher par date:</label>
+    <input type="text" id="search_query" name="search_query">
+    <button type="submit">Rechercher </button>
+</form>
+<br><br><br>
+<h1>Mes rapports</h1>
+<a href="{% url 'v_rapports' %}" class="logout">Ajouter un Rapport</a>
+<br><br><br>
+
+<div class="table-responsive">
+    <table class="table">
+        <thead>
+            
+            <tr>
+                <th>Date</th>
+                <th>Motif</th>
+                <th>Bilan</th>
+                <th>Créateur</th>
+                <th>Médecin</th>
+                <th>Médicament</th>
+                <th>Quantité</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for rapport in rapports_utilisateur %}
+                <tr>
+                    <td data-label="Date">{{ rapport.date }}</td>
+                    <td data-label="Motif">{{ rapport.motif }}</td>
+                    <td data-label="Bilan">{{ rapport.bilan }}</td>
+                    <td data-label="Createur">{{ rapport.createur }}</td>
+                    <td data-label="Medecin">{{ rapport.medecin }}</td>
+                    <td data-label="Médicament">{{ rapport.medicament }}</td>
+                    <td data-label="Quantite">{{ rapport.quantite }}</td>
+                    <td >
+                        <form action="{% url 'supprimer_rapport' rapport.id %}" method="post">
+                            {% csrf_token %}
+                            <button type="submit" class="supprimer">Supprimer</button>
+                        </form>
+                    </td>
+                    <td>
+                        <a href="{% url 'modifier_rapport' rapport.id %}" class="modifier-btn">Modifier</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}

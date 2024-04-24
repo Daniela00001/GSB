@@ -1,0 +1,27 @@
+
+{% extends 'v_base_nav.html' %}
+
+{% block contenu %} 
+
+
+
+<div class="form-container">
+        <form method="post" action="{% url 'v_rapports' %}">
+            {% csrf_token %}
+            <h1 class="form-title">Ajout Rapport</h1>
+            <div class="form-field">
+                {{ form.as_p }}
+            </div>
+            <button type="submit" class="form-submit">Ajouter</button>
+        </form>
+    </div>
+
+  
+
+  
+
+
+
+{% endblock%}
+
+

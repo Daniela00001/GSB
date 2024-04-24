@@ -1,0 +1,46 @@
+{% extends 'v_base_nav.html' %}
+
+{% block contenu %} 
+    <h1>Liste des médecins</h1>
+    <a href="{% url 'v_ajoutMedicament' %}" class="logout">Ajoutez un Medicament</a>
+<br><br><br>
+<div class="table-responsive">
+    <table class="table">
+        <thead>
+
+        <tr>
+            <th>nomCommercial</th>
+            <th>composition</th>
+            <th>effets</th>
+            <th>contreIndications</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        {% for medicament in medicaments %}
+        <tr>
+   
+            <td data-label="nomCommercial">{{ medicament.nomCommercial }}</td>
+            <td data-label="composition">{{ medicament.composition }}</td>
+            <td data-label="effets">{{ medicament.effets }}</td>
+            <td data-label="contreIndications">{{ medicament.contreIndications }}</td>
+            <td>
+              
+                <form action="{% url 'supprimer_medicament' medicament.id %}" method="post"> <!-- Remplacez 'supprimer_rapport' par l'URL de votre vue de suppression -->
+                    {% csrf_token %}
+                    <button type="submit">Supprimer</button>
+                </form>
+            </td>
+            <td>
+                <a href="{% url 'modifier_medicament' medicament.id %}" class="modifier-btn">Modifier</a>
+            </td>
+            
+           
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</div>
+{% endblock%}
+
+

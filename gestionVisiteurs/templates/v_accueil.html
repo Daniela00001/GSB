@@ -1,0 +1,31 @@
+{% extends 'v_base_nav.html' %}
+{% load static %}
+{% block contenu %} 
+    <h1>Vous êtes sur votre espace MedProVisite</h1>
+    <div class="box">
+        <div class="medicin">
+            <div class="green-box">
+                <a href="{% url 'v_ajoutMedecin' %}" class="logout">Ajouter un Medecin<img src="{% static 'media/doctor.png' %}" alt="error" ></a>
+                <br><br>
+                
+               
+            </div>
+        </div>
+
+        <div class="medicin">
+            <div class="green-box">
+                <a href="{% url 'v_rapports' %}" class="logout">Ajouter un Rapport <img src="{% static 'media/report.png' %}" alt="error" width="90" height="90"></a>
+                <br><br>
+               
+            </div>
+        </div>
+
+        <div class="medicin">
+            <div class="green-box">
+                <a href="{% url 'v_ajoutMedicament' %}" class="logout">Ajouter un Medicament<img src="{% static 'media/pils.png' %}" alt="error" width="90" height="90"></a>
+                <br><br>
+                
+            </div>
+        </div>
+    </div>
+{% endblock %}

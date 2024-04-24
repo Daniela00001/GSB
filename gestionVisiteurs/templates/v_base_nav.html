@@ -1,0 +1,78 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'CSS/style.css' %}">
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</head>
+
+<body>
+    <nav>
+        <div class="hidde-mobile">
+            <div class="navbar flex space-between">
+                <div class="flex gap-16px">
+                    <a href="{% url 'v_accueil' %}">Accueil</a>
+                    <a href="{% url 'v_afficheMesRapports' %}">Rapports</a>
+                    <a href="{% url 'v_afficheMesMedecins' %}">Medecin</a>
+                    <a href="{% url 'v_afficheMesMedicament' %}">Medicament</a>
+                    <a href="{% url 'v_profil' %}">Profil</a>
+                </div>
+                <div>
+                    <a href="{% url 'deconnexion_view' %}">Déconnexion</a>
+                </div>
+    
+                
+            </div>
+        </div>
+
+        <div class="menu-mobile show-mobile ">
+            <div class="flex space-between">
+                <div>
+                    <h1 style="margin: 0;" id="show-menu"><ion-icon name="menu-outline"></ion-icon></h1>
+                </div>
+                <div>
+                    <a href="{% url 'deconnexion_view' %}"><ion-icon name="log-in-outline"></ion-icon></a>
+                </div>
+            </div>
+                <div id="menu-onclick" class="menu-onclick display-hidden">
+                    <div class="flex flex-column gap-16px">
+                        <a href="{% url 'v_accueil' %}">Accuil</a>
+                        <a href="{% url 'v_afficheMesRapports' %}">Rapports</a>
+                        <a href="{% url 'v_afficheMesMedecins' %}">Medecin</a>
+                        <a href="{% url 'v_afficheMesMedicament' %}">Medicament</a>
+                        <a href="{% url 'v_profil' %}">Profil</a>
+                    </div>
+                </div> 
+            </div>
+
+        </div>
+
+      
+    </nav>
+    <div class="container home">
+        <h1>{{ message_bienvenue }}</h1>
+    </div>
+    {% block contenu %} {% endblock %}
+</body>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var showMenu = document.getElementById('show-menu');
+        var menuOnClick = document.getElementById('menu-onclick');
+
+        showMenu.addEventListener('click', function() {
+            if (menuOnClick.classList.contains('display-hidden')) {
+                menuOnClick.classList.remove('display-hidden');
+                menuOnClick.classList.add('display-block');
+            } else {
+                menuOnClick.classList.remove('display-block');
+                menuOnClick.classList.add('display-hidden');
+            }
+        });
+    });
+</script>
+
+</html>
